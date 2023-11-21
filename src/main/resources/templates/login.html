@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      data-bs-theme="dark">
+<head th:replace="~{fragments::head}"/>
+<body>
+  <!--Navbar-->
+  <section th:replace="~{fragments::header}"></section>
+
+  <!--Login-->
+  <section>
+
+    <div class="container-fluid p-4">
+      <!-- Msg alertas -->
+      <section th:replace="~{fragments::alerts-msg}"/>
+      <div class="container-md p-4" >
+        <h1 class="text-center">Login User</h1>
+        <div class="container-sm d-flex justify-content-center" style="width: 60rem">
+          <div class="row p-4">
+            <form
+                    th:action="@{/login}"
+                    th:object="${userLogin}"
+                    method="post">
+              <div class="row g-3 p-2">
+                <!-- email --->
+                <div class="col">
+                  <div class="form-floating ">
+                    <input type="text" class="form-control" id="email" placeholder="Enter username" th:field="*{email}">
+                    <label for="floatingInputEmail">Email</label>
+                    <small class="form-text text-danger " th:if="${#fields.hasErrors('email')}" th:errorclass="error" th:errors="*{email}"></small>
+                  </div>
+                </div>
+                <!-- password --->
+                <div class="col">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="password" placeholder="Enter password" th:field="*{password}">
+                    <label for="floatingInputPassword">Password</label>
+                    <small class="form-text text-danger " th:if="${#fields.hasErrors('password')}" th:errorclass="error" th:errors="*{password}"></small>
+                  </div>
+                </div>
+              </div>
+              <small>Forgot passsword?</small>
+              <!--button register-->
+              <div class="row g-3 p-2">
+                <button type="submit" class="btn btn-outline-primary col-lg-12">Login</button>
+              </div>
+              <div class="row g-3 p-2">
+                <small class="text-center">Not register? <a th:href="@{/auth/register}">Sign up now</a></small>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--Bootstrap Js-->
+  <section th:replace="~{fragments::bootstrapJs}"/>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      data-bs-theme="dark">
+<head th:replace="~{fragments::head}"/>
+<body>
+
+    <!--NavBar-->
+    <section th:replace="~{fragments::header}"/>
+    <!--Users table-->
+    <section>
+        <div class="container p-4" style="width: 80%">
+            <table class="table table-striped table-responsive">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Roles</th>
+                    <th th:if="${session.userSession.getRole().name() == 'ADMIN'}" scope="col" >Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user, status : ${users}">
+                    <td scope="row" th:text="${user.username}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.role}"></td>
+                    <td  th:if="${session.userSession.getRole().name() == 'ADMIN'}">
+                     <a class="btn btn-outline-warning m-2 p-2" type="button" aria-current="page">Modificar</a>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <!--Bootstrap JS-->
+    <section th:replace="~{fragments::bootstrapJs}"/>
+</body>
+</html>

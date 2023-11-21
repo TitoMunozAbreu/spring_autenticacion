@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      data-bs-theme="dark">
+<head th:replace="~{fragments::head}"/>
+<body>
+    <!--NavBar-->
+    <section th:replace="~{fragments::header}"/>
+    <!-- Msg alertas -->
+    <section th:replace="~{fragments::alerts-msg}"/>
+    <section>
+        <div class="container p-3" style="width: 50%">
+            <div class="jumbotron">
+                <h1 class="display-4">Autenticación de usuarios</h1>
+                <p class="lead">
+                    Proyecto enfocado en la autenticación de usuarios utilizando las dependencias de spring
+                    security.
+                </p>
+                <hr class="my-4">
+                <p>Dentro de sus funcionalidades son: El registro de usuario con su validacion de campos e inicio de sesion.</p>
+            </div>
+        </div>
+    </section>
+    <!--Bootstrap JS-->
+    <section th:replace="~{fragments::bootstrapJs}"/>
+</body>
+</html>
