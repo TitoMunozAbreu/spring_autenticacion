@@ -28,7 +28,6 @@ public class UserEntity implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-
     public UserEntity(){}
 
     public UserEntity(String firstName,String lastName, String email, String password, Role role) {

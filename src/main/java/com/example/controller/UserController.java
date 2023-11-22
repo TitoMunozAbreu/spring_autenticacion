@@ -84,7 +84,6 @@ public class UserController {
     public String autenticado(Model model, HttpSession session){
         UserEntity userSession = (UserEntity) session.getAttribute("userSession");
         model.addAttribute("users", this.repository.findAll());
-        model.addAttribute("isLogin",true);
         model.addAttribute("userName", userSession.getFirstName());
 
         return "users-config";
